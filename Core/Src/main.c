@@ -110,7 +110,7 @@ int main(void)
   {
     (void)HAL_CAN_AddTxMessage(&hcan1, &txHeader, txData, &txMailbox);
 
-    HAL_Delay(1000); // TODO 电机的控制频率建议100hz
+    HAL_Delay(10); // TODO 电机的控制频率建议100hz
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
