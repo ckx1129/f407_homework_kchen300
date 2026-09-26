@@ -102,13 +102,13 @@ int main(void)
   uint8_t rx_data;
   while (1)
   {
-    // 尝试接收1个字符
+    
     if (HAL_UART_Receive(&huart6, &rx_data, 1, 100) == HAL_OK)
     {
-      // 回显
+
       HAL_UART_Transmit(&huart6, &rx_data, 1, 100);
 
-      // 控制逻辑：现在直接用你填的 User Label！
+      
       if (rx_data == '1') 
       {
         HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET); // 尝试亮红灯
