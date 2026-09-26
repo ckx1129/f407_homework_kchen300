@@ -99,35 +99,19 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  uint8_t rx_data;
+
   while (1)
-  {
+ {
     
-    if (HAL_UART_Receive(&huart6, &rx_data, 1, 100) == HAL_OK)
-    {
-
-      HAL_UART_Transmit(&huart6, &rx_data, 1, 100);
-
-      
-      if (rx_data == '1') 
-      {
-        HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET); // 尝试亮红灯
-        HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_SET); // 熄灭绿灯
-      } 
-      else if (rx_data == '0') 
-      {
-        HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET); // 尝试灭红灯
-        HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_RESET); // 点亮绿灯
-      }
-    }
-  }
+  
   
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-  }
-  /* USER CODE END 3 */
   
+  /* USER CODE END 3 */
+ }
+}
 
 /**
   * @brief System Clock Configuration
@@ -166,7 +150,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV4;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5) != HAL_OK)
   {
@@ -271,12 +255,24 @@ HAL_UARTEx_RxEventCallback(UART_HandleTypeDef*huart,uint16_t Size)
       {
         if(rx_buffer[1]=='1')
 {
-  HAL_GPIO_WritePin(LED_RED_GPIO_Port,LED_RED_Pin,GPIO_PIN_RESET);
-        }else if(rx_buffer[1]=='0')
+  HAL_GPIO_WritePin(GPIOH,LED_RED_Pin,GPIO_PIN_SET);
+        }
+        else if(rx_buffer[1]=='0')
         {
-          HAL_GPIO_WritePin(LED_RED_GPIO_Port,LED_RED_Pin,GPIO_PIN_SET);
+          HAL_GPIO_WritePin(GPIOH,LED_RED_Pin,GPIO_PIN_RESET);
         }
       /* code */
+    }
+    else if(rx_buffer[0]=='G')
+    {
+      if(rx_buffer[1]=='1')
+{
+  HAL_GPIO_WritePin(GPIOH,LED_GREEN_Pin,GPIO_PIN_SET);
+}
+      else if(rx_buffer[1]=='0')
+      {
+        HAL_GPIO_WritePin(GPIOH,LED_GREEN_Pin,GPIO_PIN_RESET);
+      }
     }
   } 
   HAL_UARTEx_ReceiveToIdle_DMA(&huart6,rx_buffer,sizeof(rx_buffer));
