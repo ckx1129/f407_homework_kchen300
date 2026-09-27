@@ -11,7 +11,11 @@
             "request": "launch",
             "servertype": "openocd",
             "cwd": "${workspaceFolder}",
+<<<<<<< HEAD
             "executable": "${workspaceFolder}/build/Debug/prj926.elf", //TODO:改为真实.elf
+=======
+            "executable": "${workspaceFolder}/build/Debug/prj926n.elf", //TODO:改为真实.elf
+>>>>>>> 4b6b98c44a773a8703121b8fd7ed73b883585e27
             "preLaunchTask": "cmake-build-debug",
             "configFiles": [
                 "interface/cmsis-dap.cfg",
@@ -35,7 +39,11 @@
             "request": "launch",
             "servertype": "openocd",
             "cwd": "${workspaceFolder}",
+<<<<<<< HEAD
             "executable": "${workspaceFolder}/build/Debug/prj926.elf",
+=======
+            "executable": "${workspaceFolder}/build/Debug/prj926n.elf",
+>>>>>>> 4b6b98c44a773a8703121b8fd7ed73b883585e27
             "preLaunchTask": "cmake-build-debug",
             "configFiles": [
                 "interface/stlink.cfg",

@@ -55,9 +55,13 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
+<<<<<<< HEAD
 extern DMA_HandleTypeDef hdma_usart6_rx;
 extern DMA_HandleTypeDef hdma_usart6_tx;
 extern UART_HandleTypeDef huart6;
+=======
+extern CAN_HandleTypeDef hcan1;
+>>>>>>> 4b6b98c44a773a8703121b8fd7ed73b883585e27
 /* USER CODE BEGIN EV */
 
 /* USER CODE END EV */
@@ -201,6 +205,7 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
+<<<<<<< HEAD
   * @brief This function handles DMA2 stream2 global interrupt.
   */
 void DMA2_Stream2_IRQHandler(void)
@@ -240,6 +245,19 @@ void USART6_IRQHandler(void)
   /* USER CODE BEGIN USART6_IRQn 1 */
 
   /* USER CODE END USART6_IRQn 1 */
+=======
+  * @brief This function handles CAN1 RX0 interrupts.
+  */
+void CAN1_RX0_IRQHandler(void)
+{
+  /* USER CODE BEGIN CAN1_RX0_IRQn 0 */
+
+  /* USER CODE END CAN1_RX0_IRQn 0 */
+  HAL_CAN_IRQHandler(&hcan1);
+  /* USER CODE BEGIN CAN1_RX0_IRQn 1 */
+
+  /* USER CODE END CAN1_RX0_IRQn 1 */
+>>>>>>> 4b6b98c44a773a8703121b8fd7ed73b883585e27
 }
 
 /* USER CODE BEGIN 1 */

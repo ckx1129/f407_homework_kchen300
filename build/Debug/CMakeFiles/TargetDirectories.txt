@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 D:/PNX/prj926/build/Debug/CMakeFiles/prj926.dir
 D:/PNX/prj926/build/Debug/CMakeFiles/edit_cache.dir
 D:/PNX/prj926/build/Debug/CMakeFiles/rebuild_cache.dir
 D:/PNX/prj926/build/Debug/cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir
 D:/PNX/prj926/build/Debug/cmake/stm32cubemx/CMakeFiles/edit_cache.dir
 D:/PNX/prj926/build/Debug/cmake/stm32cubemx/CMakeFiles/rebuild_cache.dir
+=======
+D:/PNX/prj926n/build/Debug/CMakeFiles/prj926n.dir
+D:/PNX/prj926n/build/Debug/CMakeFiles/edit_cache.dir
+D:/PNX/prj926n/build/Debug/CMakeFiles/rebuild_cache.dir
+D:/PNX/prj926n/build/Debug/cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir
+D:/PNX/prj926n/build/Debug/cmake/stm32cubemx/CMakeFiles/edit_cache.dir
+D:/PNX/prj926n/build/Debug/cmake/stm32cubemx/CMakeFiles/rebuild_cache.dir
+>>>>>>> 4b6b98c44a773a8703121b8fd7ed73b883585e27

@@ -40,19 +40,30 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+<<<<<<< HEAD
 UART_HandleTypeDef huart6;
 DMA_HandleTypeDef hdma_usart6_rx;
 DMA_HandleTypeDef hdma_usart6_tx;
 
 /* USER CODE BEGIN PV */
 uint8_t rx_buffer[100];
+=======
+CAN_HandleTypeDef hcan1;
+
+/* USER CODE BEGIN PV */
+
+>>>>>>> 4b6b98c44a773a8703121b8fd7ed73b883585e27
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+<<<<<<< HEAD
 static void MX_DMA_Init(void);
 static void MX_USART6_UART_Init(void);
+=======
+static void MX_CAN1_Init(void);
+>>>>>>> 4b6b98c44a773a8703121b8fd7ed73b883585e27
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -71,6 +82,10 @@ int main(void)
 
   /* USER CODE BEGIN 1 */
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4b6b98c44a773a8703121b8fd7ed73b883585e27
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -91,14 +106,31 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+<<<<<<< HEAD
   MX_DMA_Init();
   MX_USART6_UART_Init();
   /* USER CODE BEGIN 2 */
   HAL_UARTEx_ReceiveToIdle_DMA(&huart6, rx_buffer, sizeof(rx_buffer));
+=======
+  MX_CAN1_Init();
+  /* USER CODE BEGIN 2 */
+  CAN_TxHeaderTypeDef txHeader = {0};
+  txHeader.StdId = 0x713;// TODO 对吗
+  txHeader.ExtId = 0;// TODO对吗
+  txHeader.IDE = CAN_ID_STD;// TODO 不对吧 
+  txHeader.RTR = CAN_RTR_DATA;//TODO 要改吗
+  txHeader.DLC = 8;// TODO 要改吗
+  txHeader.TransmitGlobalTime = DISABLE;
+
+  /* 0x201 M2006 current, big-endian int16, range typically [-10000, 10000] */
+  uint8_t txData[8] = {0x03,0xE8,0x00,0x00,0x00,0x00,0x00,0x00};// TODO 构造控制电机的CAN帧。建议电流值：1000
+  uint32_t txMailbox;
+>>>>>>> 4b6b98c44a773a8703121b8fd7ed73b883585e27
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+<<<<<<< HEAD
 
   while (1)
  {
@@ -111,6 +143,18 @@ int main(void)
   
   /* USER CODE END 3 */
  }
+=======
+  while (1)
+  {
+    (void)HAL_CAN_AddTxMessage(&hcan1, &txHeader, txData, &txMailbox);
+
+    HAL_Delay(10); // TODO 电机的控制频率建议100hz
+    /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
+  }
+  /* USER CODE END 3 */
+>>>>>>> 4b6b98c44a773a8703121b8fd7ed73b883585e27
 }
 
 /**
@@ -159,6 +203,7 @@ void SystemClock_Config(void)
 }
 
 /**
+<<<<<<< HEAD
   * @brief USART6 Initialization Function
   * @param None
   * @retval None
@@ -207,6 +252,64 @@ static void MX_DMA_Init(void)
   /* DMA2_Stream7_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA2_Stream7_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream7_IRQn);
+=======
+  * @brief CAN1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_CAN1_Init(void)
+{
+
+  /* USER CODE BEGIN CAN1_Init 0 */
+
+  /* USER CODE END CAN1_Init 0 */
+
+  /* USER CODE BEGIN CAN1_Init 1 */
+
+  /* USER CODE END CAN1_Init 1 */
+  hcan1.Instance = CAN1;
+  hcan1.Init.Prescaler = 3;
+  hcan1.Init.Mode = CAN_MODE_SILENT_LOOPBACK;
+  hcan1.Init.SyncJumpWidth = CAN_SJW_1TQ;
+  hcan1.Init.TimeSeg1 = CAN_BS1_10TQ;
+  hcan1.Init.TimeSeg2 = CAN_BS2_3TQ;
+  hcan1.Init.TimeTriggeredMode = DISABLE;
+  hcan1.Init.AutoBusOff = DISABLE;
+  hcan1.Init.AutoWakeUp = DISABLE;
+  hcan1.Init.AutoRetransmission = DISABLE;
+  hcan1.Init.ReceiveFifoLocked = DISABLE;
+  hcan1.Init.TransmitFifoPriority = DISABLE;
+  if (HAL_CAN_Init(&hcan1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING);
+  /* USER CODE BEGIN CAN1_Init 2 */
+  CAN_FilterTypeDef can_filter_st = {0};
+  can_filter_st.FilterActivation = ENABLE;
+  can_filter_st.FilterMode = CAN_FILTERMODE_IDMASK;
+  can_filter_st.FilterScale = CAN_FILTERSCALE_32BIT;
+  can_filter_st.FilterIdHigh = 0x0000;
+  can_filter_st.FilterIdLow = 0x0000;
+  can_filter_st.FilterMaskIdHigh = 0x0000;
+  can_filter_st.FilterMaskIdLow = 0x0000;
+  can_filter_st.FilterBank = 0;
+  can_filter_st.FilterFIFOAssignment = CAN_RX_FIFO0;
+  can_filter_st.SlaveStartFilterBank = 14;
+  if (HAL_CAN_ConfigFilter(&hcan1, &can_filter_st) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_CAN_Start(&hcan1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE END CAN1_Init 2 */
+>>>>>>> 4b6b98c44a773a8703121b8fd7ed73b883585e27
 
 }
 
@@ -223,6 +326,7 @@ static void MX_GPIO_Init(void)
   /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
+<<<<<<< HEAD
   __HAL_RCC_GPIOG_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOH_CLK_ENABLE();
@@ -232,6 +336,17 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pins : LED_RED_Pin LED_GREEN_Pin */
   GPIO_InitStruct.Pin = LED_RED_Pin|LED_GREEN_Pin;
+=======
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOD_CLK_ENABLE();
+  __HAL_RCC_GPIOH_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOH, GPIO_PIN_12|GPIO_PIN_11, GPIO_PIN_SET);
+
+  /*Configure GPIO pins : PH12 PH11 */
+  GPIO_InitStruct.Pin = GPIO_PIN_12|GPIO_PIN_11;
+>>>>>>> 4b6b98c44a773a8703121b8fd7ed73b883585e27
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -243,6 +358,7 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+<<<<<<< HEAD
 void
 HAL_UARTEx_RxEventCallback(UART_HandleTypeDef*huart,uint16_t Size)
 {
@@ -277,6 +393,17 @@ HAL_UARTEx_RxEventCallback(UART_HandleTypeDef*huart,uint16_t Size)
   } 
   HAL_UARTEx_ReceiveToIdle_DMA(&huart6,rx_buffer,sizeof(rx_buffer));
   }
+=======
+  void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan){
+    if(hcan->Instance==CAN1)
+    {CAN_RxHeaderTypeDef rx_header;
+     uint8_t rx_data[8];
+      if (HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &rx_header, rx_data) == HAL_OK)
+     {
+          HAL_GPIO_TogglePin(GPIOH,GPIO_PIN_12);
+     }
+    }
+>>>>>>> 4b6b98c44a773a8703121b8fd7ed73b883585e27
 }
 /* USER CODE END 4 */
 

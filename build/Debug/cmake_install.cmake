@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 # Install script for directory: D:/PNX/prj926
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
   set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/prj926")
+=======
+# Install script for directory: D:/PNX/prj926n
+
+# Set the install prefix
+if(NOT DEFINED CMAKE_INSTALL_PREFIX)
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/prj926n")
+>>>>>>> 4b6b98c44a773a8703121b8fd7ed73b883585e27
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -39,13 +47,21 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+<<<<<<< HEAD
   include("D:/PNX/prj926/build/Debug/cmake/stm32cubemx/cmake_install.cmake")
+=======
+  include("D:/PNX/prj926n/build/Debug/cmake/stm32cubemx/cmake_install.cmake")
+>>>>>>> 4b6b98c44a773a8703121b8fd7ed73b883585e27
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
+<<<<<<< HEAD
   file(WRITE "D:/PNX/prj926/build/Debug/install_local_manifest.txt"
+=======
+  file(WRITE "D:/PNX/prj926n/build/Debug/install_local_manifest.txt"
+>>>>>>> 4b6b98c44a773a8703121b8fd7ed73b883585e27
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -61,6 +77,10 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+<<<<<<< HEAD
   file(WRITE "D:/PNX/prj926/build/Debug/${CMAKE_INSTALL_MANIFEST}"
+=======
+  file(WRITE "D:/PNX/prj926n/build/Debug/${CMAKE_INSTALL_MANIFEST}"
+>>>>>>> 4b6b98c44a773a8703121b8fd7ed73b883585e27
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

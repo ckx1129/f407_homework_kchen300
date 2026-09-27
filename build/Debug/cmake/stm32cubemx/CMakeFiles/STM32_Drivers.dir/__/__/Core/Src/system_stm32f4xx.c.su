@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 D:/PNX/prj926/Core/Src/system_stm32f4xx.c:167:6:SystemInit	4	static
 D:/PNX/prj926/Core/Src/system_stm32f4xx.c:220:6:SystemCoreClockUpdate	32	static
+=======
+D:/PNX/prj926n/Core/Src/system_stm32f4xx.c:167:6:SystemInit	4	static
+D:/PNX/prj926n/Core/Src/system_stm32f4xx.c:220:6:SystemCoreClockUpdate	32	static
+>>>>>>> 4b6b98c44a773a8703121b8fd7ed73b883585e27

@@ -6,7 +6,11 @@
 # It is included in the main 'build.ninja'.
 
 # =============================================================================
+<<<<<<< HEAD
 # Project: prj926
+=======
+# Project: prj926n
+>>>>>>> 4b6b98c44a773a8703121b8fd7ed73b883585e27
 # Configurations: Debug
 # =============================================================================
 # =============================================================================
@@ -14,7 +18,11 @@
 #############################################
 # Rule for compiling ASM files.
 
+<<<<<<< HEAD
 rule ASM_COMPILER__prj926_unscanned_Debug
+=======
+rule ASM_COMPILER__prj926n_unscanned_Debug
+>>>>>>> 4b6b98c44a773a8703121b8fd7ed73b883585e27
   depfile = $DEP_FILE
   deps = gcc
   command = ${LAUNCHER}${CODE_CHECK}D:\f\arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi\arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi\bin\arm-none-eabi-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -24,7 +32,11 @@ rule ASM_COMPILER__prj926_unscanned_Debug
 #############################################
 # Rule for compiling C files.
 
+<<<<<<< HEAD
 rule C_COMPILER__prj926_unscanned_Debug
+=======
+rule C_COMPILER__prj926n_unscanned_Debug
+>>>>>>> 4b6b98c44a773a8703121b8fd7ed73b883585e27
   depfile = $DEP_FILE
   deps = gcc
   command = ${LAUNCHER}${CODE_CHECK}D:\f\arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi\arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi\bin\arm-none-eabi-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -34,7 +46,11 @@ rule C_COMPILER__prj926_unscanned_Debug
 #############################################
 # Rule for linking C executable.
 
+<<<<<<< HEAD
 rule C_EXECUTABLE_LINKER__prj926_Debug
+=======
+rule C_EXECUTABLE_LINKER__prj926n_Debug
+>>>>>>> 4b6b98c44a773a8703121b8fd7ed73b883585e27
   command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && D:\f\arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi\arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi\bin\arm-none-eabi-gcc.exe $FLAGS $LINK_FLAGS $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
   description = Linking C executable $TARGET_FILE
   restat = $RESTAT
@@ -62,7 +78,11 @@ rule C_COMPILER__STM32_Drivers_unscanned_Debug
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
+<<<<<<< HEAD
   command = D:\f\cmake-3.31.12-windows-x86_64\cmake-3.31.12-windows-x86_64\bin\cmake.exe --regenerate-during-build -SD:\PNX\prj926 -BD:\PNX\prj926\build\Debug
+=======
+  command = D:\f\cmake-3.31.12-windows-x86_64\cmake-3.31.12-windows-x86_64\bin\cmake.exe --regenerate-during-build -SD:\PNX\prj926n -BD:\PNX\prj926n\build\Debug
+>>>>>>> 4b6b98c44a773a8703121b8fd7ed73b883585e27
   description = Re-running CMake...
   generator = 1
 

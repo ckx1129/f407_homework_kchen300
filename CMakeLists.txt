@@ -19,7 +19,11 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 # Set the project name
+<<<<<<< HEAD
 set(CMAKE_PROJECT_NAME prj926)
+=======
+set(CMAKE_PROJECT_NAME prj926n)
+>>>>>>> 4b6b98c44a773a8703121b8fd7ed73b883585e27
 
 # Enable compile command to ease indexing with e.g. clangd
 set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
