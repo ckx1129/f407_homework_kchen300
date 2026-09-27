@@ -19,8 +19,6 @@
 99	358	8121104614065470	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c.obj	61167ead007ddf5d
 29	377	8121104614262060	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj	5a1d12c37ac078c4
 84	361	8121104614111028	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj	abd1caf09e77d6b6
-2	171	8121153726127836	CMakeFiles/prj926.dir/Core/Src/main.c.obj	54d4e8671208bb17
-172	308	8121153727456096	prj926.elf	ffcb4e4a3f66e015
-2	116	8121265458608768	build.ninja	e9b5b081e04f6b1
 3	276	8121287244478999	CMakeFiles/prj926.dir/Core/Src/main.c.obj	54d4e8671208bb17
 277	699	8121287248625332	prj926.elf	ffcb4e4a3f66e015
+2	116	8121922763861115	build.ninja	e9b5b081e04f6b1
